@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const PublicacionSchema = new mongoose.Schema({
     titulo: {
-        int: id,
+        type: String,
         required: true
     },
     contenido: {
@@ -19,7 +19,7 @@ const PublicacionSchema = new mongoose.Schema({
         default: new Date()
     },
     fotografia: {
-        type: BinData, //pediente la revision de este tipo de dato
+        type: String, //pediente la revision de este tipo de dato
         default: null
     },
 });

@@ -1,14 +1,15 @@
 const bcrypt = require('bcrypt');
-const Usuario = require('../models/usuario.model');
+const Publicacion = require('../models/publicaciones.model');
 const saltRounds = parseInt(process.env.SALT_ROUNDS);
 
 const create = async (req, res) => { //crear publicacion
     try{
-        const { titulo, contenido, autor, fotografia } = req.body;
+        const { titulo, contenido, autor, fecha_publicacion, fotografia } = req.body;
         const publicacion = new Publicacion({
             titulo,
             contenido,
             autor,
+            fecha_publicacion,
             fotografia
         });
 
@@ -129,14 +130,15 @@ const partialUpdate = async (req, res) => { //actualizar publicacion
 const totalUpdate = async (req, res) => { //actualizar publicacion
     try {
         const id = req.params.id;
-        const { titulo, contenido, autor, fotografia } = req.body;
+        const { titulo, contenido, autor, fecha_publicacion, fotografia } = req.body;
         let publicacion = await Publicacion.findById(id);
         if (!publicacion) {
             return res.status(404).json({
                 message: "Publicacion no encontrada"
             });
         }
-        publicacion = {...publicacion, titulo, contenido, autor, fotografia};
+        publicacion = {titulo: titulo || null, contenido: contenido || null, autor : autor || null,
+            fecha_publicacion: fecha_publicacion || null, fotografia: fotografia || null};
         await publicacion.save();
         return res.status(200).json({
             message: "Publicacion actualizada exitosamente"
