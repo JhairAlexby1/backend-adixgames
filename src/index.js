@@ -18,12 +18,10 @@ app.use(cookieParser()) //Esto permite que la api pueda leer la informacion de l
 const usuarioRouter = require('./routes/usuario.routes')
 const authRouter = require('./routes/auth.routes')
 const publicacionRouter = require('./routes/publicaciones.routes')
-const videojuegosRouter = require('./routes/videojuegos.routes')
 
 
 app.use('/usuarios', usuarioRouter);
 app.use('/auth', publicacionRouter);
-app.use('/auth', videojuegosRouter);
 app.use('/auth', authRouter);
 
 app.listen(process.env.PORT, () => {
