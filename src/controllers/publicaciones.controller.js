@@ -8,7 +8,7 @@ const create = async (req, res) => { //crear publicacion
         const publicacion = new Publicacion({
             titulo,
             contenido,
-            autor,
+            created_by: autor,
             fecha_publicacion,
             fotografia
         });

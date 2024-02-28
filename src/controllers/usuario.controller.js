@@ -77,8 +77,8 @@ const deletedById = async (req, res) => { //eliminar usuario
                 message: "Usuario no encontrado"
             });
         }
-        usuario = {...usuario, deleted: true, deleted_at: new Date()}; //campo de auditoria para saber que dia se elimino o quien lo eimino, actualizo o creo
-        await usuario.save();
+        const usuarioEliminado = {deleted: true} //campo de auditoria para saber que dia se elimino o quien lo eimino, actualizo o creo
+        await Usuario.findByIdAndUpdate(id, usuarioEliminado);
         return res.status(200).json({
             message: "Usuario eliminado exitosamente"
         });

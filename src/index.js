@@ -21,7 +21,7 @@ const publicacionRouter = require('./routes/publicaciones.routes')
 
 
 app.use('/usuarios', usuarioRouter);
-app.use('/auth', publicacionRouter);
+app.use('/publicaciones', publicacionRouter);
 app.use('/auth', authRouter);
 
 app.listen(process.env.PORT, () => {
